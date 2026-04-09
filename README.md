@@ -2,6 +2,12 @@
 
 An experimental full-stack platform combining **Web3, AI, and geospatial visualization** to create an interactive and decentralized ecosystem.
 
+
+
+
+
+#  ECOMINE : Turning tomorrow's e-waste into today's digital assets.
+
 ---
 
 ## 🧠 Vision

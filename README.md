@@ -83,7 +83,7 @@ ECOMINE explores the intersection of **blockchain technology, artificial intelli
 
 ### 1. Clone the repository
 
-git clone https://github.com/akashduttaa/ECOMINE_PROTOTYPE.git
+git clone https://github.com/akashduttaa/ECOMINE.git
 
 ### 2. Navigate to frontend
 

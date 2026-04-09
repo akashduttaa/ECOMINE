@@ -110,7 +110,7 @@ export default function Footer() {
                 <span className="font-semibold">Email:</span>
                 <br />
                 <a href="mailto:hello@ecomine.com" className="hover:text-white transition-colors duration-200">
-                  hello@ecomine.com
+                  ecomine@gmail.com
                 </a>
               </p>
               <p className="text-emerald-100 text-sm">

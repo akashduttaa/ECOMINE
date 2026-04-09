@@ -133,15 +133,15 @@ export default function Footer() {
             &copy; {currentYear} Ecomine. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+            <Link href="/privacy-policy" className="text-emerald-100 hover:text-white transition-colors duration-200">
               Privacy Policy
-            </a>
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+            </Link>
+            <Link href="/terms-of-service" className="text-emerald-100 hover:text-white transition-colors duration-200">
               Terms of Service
-            </a>
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+            </Link>
+            <Link href="/cookie-policy" className="text-emerald-100 hover:text-white transition-colors duration-200">
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

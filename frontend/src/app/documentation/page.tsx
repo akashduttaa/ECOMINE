@@ -31,6 +31,16 @@ export default function DocumentationPage() {
               <li>• <a href="#webhooks" className="hover:text-emerald-400 transition-colors">Webhook configuration</a></li>
             </ul>
           </div>
+
+          <div className="bg-neutral-900 rounded-xl p-6 border border-emerald-500/20">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-400">Legal & Policies</h2>
+            <ul className="space-y-3 text-neutral-300">
+              <li>• <a href="/privacy-policy" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+              <li>• <a href="/terms-of-service" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+              <li>• <a href="/cookie-policy" className="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+              <li>• <a href="#" className="hover:text-emerald-400 transition-colors">Contact Support</a></li>
+            </ul>
+          </div>
         </div>
 
         <div className="space-y-8">

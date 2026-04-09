@@ -28,8 +28,11 @@ interface DropZone {
 }
 
 const mockDropZones: DropZone[] = [
-  { id: '1', name: 'Downtown Recycling Center', lat: 40.7128, lng: -74.0060 },
-  { id: '2', name: 'Green Earth E-Waste', lat: 40.7300, lng: -73.9900 },
+  { id: '1', name: 'Kolkata E-Waste Hub - Shyambazar', lat: 22.5897, lng: 88.3639 },
+  { id: '2', name: 'Green Earth Recycling - Ballygunge', lat: 22.5384, lng: 88.3654 },
+  { id: '3', name: 'EcoMine Drop Zone - Salt Lake', lat: 22.5726, lng: 88.4226 },
+  { id: '4', name: 'Digital Waste Center - New Market', lat: 22.5487, lng: 88.3621 },
+  { id: '5', name: 'Eco-Recovery Unit - Behala', lat: 22.4862, lng: 88.3282 },
 ];
 
 export default function Map() {
@@ -47,7 +50,7 @@ export default function Map() {
   return (
     <div className="rounded-xl overflow-hidden shadow-2xl h-[400px]">
       <MapContainer
-        center={[40.7128, -74.0060]}
+        center={[22.5726, 88.3639]}
         zoom={12}
         style={{ height: '100%', width: '100%' }}
       >

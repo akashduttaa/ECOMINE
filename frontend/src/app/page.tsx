@@ -2,9 +2,14 @@
 
 import EarthScene from '@/components/EarthScene';
 import WalletConnect from '@/components/WalletConnect';
-import Map from '@/components/Map';
 import ScannerModal from '@/components/ScannerModal';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('@/components/Map'), { 
+  ssr: false,
+  loading: () => <div className="h-64 bg-neutral-800 rounded-xl animate-pulse"></div>
+});
 
 export default function Home() {
   const [isScannerOpen, setIsScannerOpen] = useState(false);

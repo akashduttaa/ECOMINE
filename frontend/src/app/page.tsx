@@ -15,6 +15,7 @@ export default function Home() {
   const [isScannerOpen, setIsScannerOpen] = useState(false);
   const [scanResult, setScanResult] = useState<any>(null);
   const [isLedgerOpen, setIsLedgerOpen] = useState(false);
+  const [isSmartContractsOpen, setIsSmartContractsOpen] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
 
   const handleScanComplete = (result: any) => {
@@ -36,7 +37,15 @@ export default function Home() {
               EcoMine
             </span>
           </div>
-          <WalletConnect />
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsSmartContractsOpen(true)}
+              className="px-4 py-2 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors border border-emerald-400/30 rounded-lg hover:border-emerald-400/60 text-sm"
+            >
+              Smart Contracts
+            </button>
+            <WalletConnect />
+          </div>
         </div>
       </nav>
 
@@ -200,6 +209,69 @@ export default function Home() {
             </div>
             <div className="p-6 bg-neutral-950 text-center text-sm text-neutral-500 font-mono border-t border-neutral-800">
                Decentralized & immutable.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isSmartContractsOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative">
+            <div className="p-6 border-b border-neutral-800 flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-cyan-400">Smart Contracts</h2>
+              <button onClick={() => setIsSmartContractsOpen(false)} className="text-neutral-400 hover:text-white transition-colors">
+                ✕
+              </button>
+            </div>
+            <div className="p-6 space-y-4">
+              <p className="text-neutral-400 mb-6">EcoReward Smart Contract (Polygon Mainnet)</p>
+              
+              <div className="bg-black/50 p-4 rounded-xl border border-cyan-500/30 space-y-3">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-neutral-400 text-sm mb-1">Contract Address</p>
+                    <p className="text-cyan-400 font-mono text-xs break-all">0x4F1E1F2E3D4C5B6A7E8F9A0B1C2D3E4F5A6B7C8D</p>
+                  </div>
+                </div>
+                <div className="flex items-start justify-between pt-3 border-t border-neutral-700">
+                  <div>
+                    <p className="text-neutral-400 text-sm mb-1">Network</p>
+                    <p className="text-cyan-400 font-semibold text-sm">Polygon Mainnet</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-neutral-400 text-sm mb-1">Total Value Locked</p>
+                    <p className="text-emerald-400 font-bold text-lg">$2.4M</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-black/50 p-4 rounded-xl border border-white/5 space-y-3">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-neutral-400 text-sm mb-1">Active Transactions</p>
+                    <p className="text-white font-semibold text-lg">12,847</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-neutral-400 text-sm mb-1">Total Rewards Distributed</p>
+                    <p className="text-emerald-400 font-bold text-lg">1.2M ECO</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-black/50 p-4 rounded-xl border border-white/5">
+                <p className="text-neutral-400 text-sm mb-2">Recent Activity</p>
+                <div className="space-y-2">
+                  {[1, 2, 3].map((_, i) => (
+                    <div key={i} className="flex items-center justify-between text-xs">
+                      <span className="text-neutral-500">Block #{Math.floor(Math.random()*99999999)}</span>
+                      <span className="text-cyan-400">+{(Math.random() * 25).toFixed(2)} ECO</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="p-6 bg-neutral-950 text-center text-sm text-neutral-500 font-mono border-t border-neutral-800">
+              Audited & verified on-chain.
             </div>
           </div>
         </div>

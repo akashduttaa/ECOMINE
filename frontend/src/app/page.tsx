@@ -90,7 +90,6 @@ export default function Home() {
             {/* Display Scan Result dynamically */}
             {scanResult && !verificationSuccess && (
               <div className="bg-emerald-950/40 border border-emerald-500/20 p-6 rounded-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h3 className="text-emerald-400 font-bold mb-2 break-all">Identified: {scanResult.device_model}</h3>
                 <div className="flex gap-4 mb-4 text-sm text-neutral-300">
                   <p>Copper: <span className="font-mono">{scanResult.materials['Copper (g)']}g</span></p>
                   <p>Gold: <span className="font-mono">{scanResult.materials['Gold (g)']}g</span></p>

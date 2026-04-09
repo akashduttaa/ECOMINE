@@ -80,24 +80,24 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 text-emerald-300">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+                <Link href="/documentation" className="text-emerald-100 hover:text-white transition-colors duration-200">
                   Documentation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+                <Link href="/api-docs" className="text-emerald-100 hover:text-white transition-colors duration-200">
                   API Docs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+                <Link href="/blog" className="text-emerald-100 hover:text-white transition-colors duration-200">
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors duration-200">
+                <Link href="/community" className="text-emerald-100 hover:text-white transition-colors duration-200">
                   Community
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -3,6 +3,7 @@
 import EarthScene from '@/components/EarthScene';
 import WalletConnect from '@/components/WalletConnect';
 import ScannerModal from '@/components/ScannerModal';
+import TokenomicsModal from '@/components/TokenomicsModal';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
@@ -16,6 +17,7 @@ export default function Home() {
   const [scanResult, setScanResult] = useState<any>(null);
   const [isLedgerOpen, setIsLedgerOpen] = useState(false);
   const [isSmartContractsOpen, setIsSmartContractsOpen] = useState(false);
+  const [isTokenomicsOpen, setIsTokenomicsOpen] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
 
   const handleScanComplete = (result: any) => {
@@ -38,6 +40,12 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsTokenomicsOpen(true)}
+              className="px-4 py-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors border border-cyan-400/30 rounded-lg hover:border-cyan-400/60 text-sm"
+            >
+              Tokenomics
+            </button>
             <button
               onClick={() => setIsSmartContractsOpen(true)}
               className="px-4 py-2 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors border border-emerald-400/30 rounded-lg hover:border-emerald-400/60 text-sm"
@@ -276,6 +284,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <TokenomicsModal isOpen={isTokenomicsOpen} onClose={() => setIsTokenomicsOpen(false)} />
     </div>
   );
 }

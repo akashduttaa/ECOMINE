@@ -1,24 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-const MapContainer = dynamic(
-  () => import('react-leaflet').then(mod => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import('react-leaflet').then(mod => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import('react-leaflet').then(mod => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(
-  () => import('react-leaflet').then(mod => mod.Popup),
-  { ssr: false }
-);
+import L from 'leaflet';
 
 interface DropZone {
   id: string;
@@ -37,33 +20,60 @@ const mockDropZones: DropZone[] = [
 
 export default function Map() {
   const [isMounted, setIsMounted] = useState(false);
+  const [mapContainer, setMapContainer] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (!isMounted || !mapContainer) return;
+
+    // Initialize map
+    const map = L.map(mapContainer, {
+      center: [22.5726, 88.3639],
+      zoom: 12,
+      zoomControl: true,
+      dragging: true,
+    });
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Add markers for drop zones
+    mockDropZones.forEach((zone) => {
+      const marker = L.marker([zone.lat, zone.lng]).addTo(map);
+      marker.bindPopup(`<b>${zone.name}</b>`);
+    });
+
+    // Handle resize
+    const handleResize = () => {
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 200);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      map.remove();
+    };
+  }, [isMounted, mapContainer]);
+
   if (!isMounted) {
     return <div className="h-64 bg-neutral-800 rounded-xl animate-pulse"></div>;
   }
 
-  // Ensure leaflet CSS is loaded globally or here, usually better in layout or via head.
   return (
-    <div className="rounded-xl overflow-hidden shadow-2xl h-[400px]">
-      <MapContainer
-        center={[22.5726, 88.3639]}
-        zoom={12}
-        style={{ height: '100%', width: '100%' }}
-      >
-        <TileLayer
-          attribution='&copy; OpenStreetMap'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {mockDropZones.map((zone) => (
-          <Marker key={zone.id} position={[zone.lat, zone.lng]}>
-            <Popup>{zone.name}</Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
+    <div 
+      ref={setMapContainer}
+      className="rounded-xl overflow-hidden shadow-2xl h-[400px]"
+      style={{ width: '100%', height: '400px' }}
+    />
   );
 }

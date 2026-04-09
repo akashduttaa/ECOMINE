@@ -63,11 +63,62 @@ ECOMINE explores the intersection of **blockchain technology, artificial intelli
 
 ## 📁 Project Structure
 
-    ECOMINE_PROTOTYPE/
-      ├── frontend/    → Next.js application (UI + logic)
-      ├── backend/     → APIs and server-side logic
-      ├── contracts/   → Smart contracts (Solidity)
-      └── ai-service/  → AI/ML services (Python)
+```
+ECOMINE/
+├── frontend/                    # Next.js 16 React application
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── layout.tsx       # Root layout with navbar & footer
+│   │   │   ├── page.tsx         # Home page with hero, scanner, modals
+│   │   │   ├── globals.css      # Global styles & custom scrollbar
+│   │   │   ├── privacy-policy/  # Privacy policy page
+│   │   │   ├── terms-of-service/# Terms of service page
+│   │   │   ├── cookie-policy/   # Cookie policy page
+│   │   │   └── smart-contract/  # Smart contracts info page
+│   │   └── components/
+│   │       ├── EarthScene.tsx   # 3D Earth visualization (Three.js)
+│   │       ├── Map.tsx          # Leaflet map with Kolkata drop zones
+│   │       ├── ScannerModal.tsx # AI device scanning modal
+│   │       ├── TokenomicsModal.tsx # Token allocation & vesting dashboard
+│   │       ├── WalletConnect.tsx# Wallet connection component
+│   │       └── Footer.tsx       # Footer with links & info
+│   ├── public/                  # Static assets
+│   ├── package.json
+│   ├── next.config.ts
+│   ├── tsconfig.json
+│   └── tailwind.config.ts
+│
+├── backend/                     # Node.js/Express API server
+│   ├── controllers/
+│   │   └── scan.js             # E-waste scan analysis endpoint
+│   ├── models/
+│   │   ├── User.js             # User data model
+│   │   └── ScanRecord.js        # Scan history model
+│   ├── server.js               # Express server setup
+│   ├── package.json
+│   └── .env                    # API configuration
+│
+├── contracts/                  # Solidity smart contracts
+│   ├── contracts/
+│   │   └── EcoReward.sol       # ERC20 token + tokenomics
+│   ├── ignition/
+│   │   └── modules/
+│   │       └── EcoReward.js    # Contract deployment script
+│   ├── hardhat.config.js       # Hardhat configuration
+│   └── package.json
+│
+└── ai-service/                 # Python AI/ML service
+    ├── main.py                 # FastAPI server
+    ├── model.py                # PyTorch model inference
+    ├── train.py                # Model training script
+    ├── dataset_generator.py    # Generate synthetic training data
+    ├── models/
+    │   └── ecocmine_model.pth  # Trained model checkpoint
+    ├── data/
+    │   └── ecommerce_devices.csv # Training dataset (1000+ entries)
+    ├── requirements.txt        # Python dependencies
+    └── .env                    # AI service configuration
+```
 
 
 

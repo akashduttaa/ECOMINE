@@ -1,6 +1,21 @@
+'use client';
+
+import Link from 'next/link';
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-[family-name:var(--font-geist-sans)] selection:bg-emerald-500/30">
+      {/* Back Button */}
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 p-3 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/50 hover:border-emerald-400 rounded-lg transition-all duration-300 shadow-lg hover:shadow-emerald-500/30 group"
+        title="Back to Dashboard"
+      >
+        <svg className="w-6 h-6 text-emerald-400 group-hover:text-emerald-300 group-hover:-translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </Link>
+
       <div className="max-w-4xl mx-auto px-6 py-16">
         <div className="mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">

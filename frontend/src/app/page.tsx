@@ -6,6 +6,7 @@ import ScannerModal from '@/components/ScannerModal';
 import TokenomicsModal from '@/components/TokenomicsModal';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 const Map = dynamic(() => import('@/components/Map'), { 
   ssr: false,
@@ -19,6 +20,7 @@ export default function Home() {
   const [isSmartContractsOpen, setIsSmartContractsOpen] = useState(false);
   const [isTokenomicsOpen, setIsTokenomicsOpen] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
+  const [isPolicyMenuOpen, setIsPolicyMenuOpen] = useState(false);
 
   const handleScanComplete = (result: any) => {
     setScanResult(result);
@@ -28,6 +30,73 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-[family-name:var(--font-geist-sans)] selection:bg-emerald-500/30">
+      {/* Left Corner Policy Navigation */}
+      <div className="fixed left-6 top-24 z-40">
+        <div className="relative">
+          <button
+            onClick={() => setIsPolicyMenuOpen(!isPolicyMenuOpen)}
+            className="p-3 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/50 hover:border-emerald-400/80 rounded-lg transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20"
+            title="Policies & Legal"
+          >
+            <svg className="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C6.498 6.253 3 9.866 3 14.477V19.5c0 .828.895 1.5 2 1.5h14c1.105 0 2-.672 2-1.5v-5.023C21 9.866 17.502 6.253 12 6.253z" />
+            </svg>
+          </button>
+
+          {/* Dropdown Menu */}
+          {isPolicyMenuOpen && (
+            <div className="absolute top-full left-0 mt-2 w-56 bg-neutral-900/95 backdrop-blur-xl border border-emerald-500/30 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="p-3 border-b border-emerald-500/20">
+                <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Policies & Legal</p>
+              </div>
+              <nav className="space-y-1 p-2">
+                <Link
+                  href="/privacy-policy"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-200 hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors group"
+                  onClick={() => setIsPolicyMenuOpen(false)}
+                >
+                  <svg className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span className="text-sm font-medium">Privacy Policy</span>
+                </Link>
+                <Link
+                  href="/terms-of-service"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-200 hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors group"
+                  onClick={() => setIsPolicyMenuOpen(false)}
+                >
+                  <svg className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span className="text-sm font-medium">Terms of Service</span>
+                </Link>
+                <Link
+                  href="/cookie-policy"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-200 hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors group"
+                  onClick={() => setIsPolicyMenuOpen(false)}
+                >
+                  <svg className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span className="text-sm font-medium">Cookie Policy</span>
+                </Link>
+              </nav>
+              <div className="px-4 py-2 bg-neutral-950/50 border-t border-emerald-500/20">
+                <p className="text-xs text-neutral-500">© 2026 EcoMine</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Close menu when clicking outside */}
+      {isPolicyMenuOpen && (
+        <div 
+          className="fixed inset-0 z-30"
+          onClick={() => setIsPolicyMenuOpen(false)}
+        />
+      )}
+
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
